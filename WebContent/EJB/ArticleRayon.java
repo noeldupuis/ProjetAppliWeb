@@ -4,8 +4,6 @@ public class ArticleRayon {
 	private Produit article;
 	
 	private int position;
-	
-	
 
 	public ArticleRayon(Produit article, int position) {
 		this.article = article;
@@ -20,7 +18,7 @@ public class ArticleRayon {
 		this.article = article;
 	}
 
-	public double getPosition() {
+	public int getPosition() {
 		return position;
 	}
 

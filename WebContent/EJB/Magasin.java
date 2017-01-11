@@ -5,7 +5,7 @@ public class Magasin {
 
 	private List<Rayon> rayons;
 	
-	private Point entree;
+	private Point positionEntree; //poisition absolue du magasin
 	
 	private Point caisses;
 	
@@ -35,12 +35,12 @@ public class Magasin {
 
 
 	public Point getEntree() {
-		return entree;
+		return positionEntree;
 	}
 
 
 	public void setEntree(Point entree) {
-		this.entree = entree;
+		this.positionEntree = entree;
 	}
 
 

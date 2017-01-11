@@ -4,11 +4,8 @@ import java.util.List;
 public class Rayon {
 
 	private int numero;
-	
 	private List<ArticleRayon> articles;
-
 	private int longueur;
-	
 	private Point ext1;
 	private Point ext2;
 	
@@ -74,5 +71,13 @@ public class Rayon {
 		return this.ext2;
 	}
 	
-	
+	public List<positionProduitArticle> setPositionsArticles() {
+		List positionCategorieArticle = new ArrayList<positionProduitArticle>();
+
+		for (ArticleRayon articleRayon : this.articles) {
+			positionCategorieArticle.add(new positionProduitArticle(articleRayon.getArticle(), this.numero, articleRayon.getPosition()));
+		}
+
+		return positionCategorieArticle;
+	}
 }

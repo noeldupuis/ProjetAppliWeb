@@ -31,4 +31,9 @@ public class Itineraire {
 	public void setPoints(List<Point> points) {
 		this.points = points;
 	}
+
+	public Magasin getMagasin() { return this.magasin; }
+
+	public void setMagasin(Magasin mag){ this.magasin = mag; }
+
 }
