@@ -3,13 +3,13 @@ public class ArticleRayon {
 
 	private Produit article;
 	
-	private double taille;
+	private int position;
 	
 	
 
-	public ArticleRayon(Produit article, double taille) {
+	public ArticleRayon(Produit article, int position) {
 		this.article = article;
-		this.taille = taille;
+		this.position = position;
 	}
 
 	public Produit getArticle() {
@@ -20,12 +20,12 @@ public class ArticleRayon {
 		this.article = article;
 	}
 
-	public double getTaille() {
-		return taille;
+	public double getPosition() {
+		return position;
 	}
 
-	public void setTaille(double taille) {
-		this.taille = taille;
+	public void setTaille(int position) {
+		this.position = position;
 	}
 	
 	
