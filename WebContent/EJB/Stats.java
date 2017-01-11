@@ -116,15 +116,15 @@ public class Stats {
 	
 	public void toString(Client client) {
 		System.out.println("Statistiques du client : " + client.getPrenom() + " " + client.getNom());
+		it = statistics.entrySet().iterator();
 		while (it.hasNext()) {
-			System.out.println("1");
 			Entry<Article, Integer> pair = it.next();
-			System.out.println("- Article " + pair.getKey().getNom() + " commandé " + pair.getValue() + " fois");
+			System.out.println("- Article " + pair.getKey().getName() + " commandé " + pair.getValue() + " fois");
 			it.remove();
 		}
 	}
 	
-	public void toString(List<Article> list) {
+	public static void toString(List<Article> list) {
 		for (Article a : list) {
 			System.out.println(a.toString());
 		}
@@ -132,18 +132,23 @@ public class Stats {
 	
 	public static void main(String[] args) {
 		Stats stats = new Stats();
-		stats.majStats(new Article("jambon"), 1);
-		stats.majStats(new Article("coca"), 5);
-		stats.majStats(new Article("tomate"), 3);
-		stats.majStats(new Article("fromage"), 2);
-		stats.majStats(new Article("beurre"), 4);
+		Article jambon = new Produit("jambon", null);
+		Article tomate = new Produit("tomate", null);
+		Article fromage = new Produit("fromage", null);
+		Article beurre = new Produit("beurre", null);
+		Article coca = new Produit("coca", null);
+		stats.majStats(jambon, 1);
+		stats.majStats(tomate, 5);
+		stats.majStats(fromage, 3);
+		stats.majStats(beurre, 2);
+		stats.majStats(coca, 4);
 		stats.toString(new Client("Bennani", "Omar", "Toulouse"));
 		List<Article> list1 = new ArrayList<Article>();
 		list1 = stats.preferedArticles(7);
-		stats.toString();
+		toString(list1);
 		List<Article> list2 = new ArrayList<Article>();
 		list2 = stats.preferedArticles(3);
-		stats.toString();
+		toString(list2);
 	}
 
 }
