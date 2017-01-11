@@ -37,3 +37,8 @@ function delRow(tableau, elmt)
 {
   document.getElementById(tableau).deleteRow(elmt.parentNode.parentNode.rowIndex);
 }
+
+function setActive() 
+{
+  this.parentNode.setAttribute('class',this.perantNode.getAttribute('class')+' active');
+}
