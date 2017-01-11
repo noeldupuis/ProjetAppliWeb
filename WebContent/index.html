@@ -46,15 +46,38 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
           <li class="nav-item"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li class="nav-item"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li class="nav-item"><a href="#" onclick="$('#login').toggle();"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
       </div>
     </nav>
+    <br/><br/>
+    <div class="row" id="login" style="display: none;">
+      <div class="panel panel-default col-md-2 col-md-offset-10" style="position: absolute; right: 0;">
+      <div class="panel-body">
+        <form class="form-horizontal" id="itemListe">
+          <div class="form-group">
+            <label class="control-label col-sm-5">Email</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5">Mot de passe</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="motDePasse" required>
+            </div>
+          </div>
+          <div class="col-xs-offset-4">
+          <input type="button" value="Ajouter" class="btn btn-primary" onclick="addRow('liste', document.forms['itemListe']['sel1'].value, document.forms['itemListe']['sel2'].value, document.forms['itemListe']['qte'].value);" />
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
 
     <div class="container" id="Home">
       <!--<img src="img/supermarche01.jpg"  style="position: absolute; top: 0; left: 0; z-index: -1; opacity:0.3;height:100%"/>-->
-      <br /><br />
       <h1 style="text-align: center;">Ever been lost in a supermarket?</h1>
       <h2 style="text-align: center;">We do have the solution!</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in nunc est. Vestibulum hendrerit eros blandit tortor faucibus vehicula. Vivamus in sollicitudin ante, ut euismod ex. Duis iaculis sodales purus eget dapibus. Integer in sagittis libero. Etiam et facilisis est, at dapibus libero. Aenean laoreet, urna at semper viverra, ligula nunc porta mauris, vel vulputate nulla turpis sed massa. Nullam egestas sapien mi, vel congue tellus suscipit ac. Mauris dignissim mauris eget elit viverra, ut pulvinar lectus tempus. Sed convallis ut tellus in eleifend. Phasellus rutrum viverra eros, at fermentum odio euismod a. Quisque et lectus a magna consectetur sollicitudin. Etiam molestie facilisis posuere. Suspendisse non porta nulla.</p>
