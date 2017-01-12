@@ -6,13 +6,13 @@ public class positionProduitArticle {
     private int numRayon;
     private int positionRayon;
 
-    public positionProduitArticle() {}
 
-    public void init(Produit produit, int numRayon, int positionRayon) {
+    public positionProduitArticle(Produit produit, int numRayon, int positionRayon) {
         this.produit = produit;
         this.numRayon = numRayon;
         this.positionRayon = positionRayon;
     }
+
 
     public Produit getCategorie() {
         return produit;
@@ -22,6 +22,7 @@ public class positionProduitArticle {
         this.produit = produit;
     }
 
+
     public int getNumRayon() {
         return numRayon;
     }
@@ -29,6 +30,7 @@ public class positionProduitArticle {
     public void setNumRayon(int numRayon) {
         this.numRayon = numRayon;
     }
+
 
     public int getPositionRayon() {
         return positionRayon;
