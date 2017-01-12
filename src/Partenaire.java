@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Partenaire {
+public class Partenaire implements Compte {
 	
 	private Magasin magasin;	
 	private String nom;	

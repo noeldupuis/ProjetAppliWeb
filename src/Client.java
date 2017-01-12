@@ -1,5 +1,5 @@
 
-public class Client {
+public class Client implements Compte {
 
 	private String nom;
 	private String prenom;
