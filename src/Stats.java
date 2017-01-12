@@ -16,7 +16,9 @@ public class Stats {
 	
 	
 	/** Construit Stats. */
-	public Stats() {
+	public Stats() {}
+	
+	public void init() {
 		statistics = new HashMap<Article, Integer>();
 	}
 
@@ -168,7 +170,7 @@ public class Stats {
 		}
 	}
 	
-	public static void main(String[] args) {
+	/**public static void main(String[] args) {
 		Stats stats = new Stats();
 		
 		Article jambon = new Produit("jambon", null);
@@ -193,6 +195,6 @@ public class Stats {
 		List<Article> list2 = new ArrayList<Article>();
 		list2 = stats.preferedArticles(3);
 		listToString(list2);
-	}
+	}*/
 
 }

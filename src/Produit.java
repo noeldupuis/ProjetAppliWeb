@@ -1,18 +1,13 @@
 
 public class Produit implements Article {
-
 	
 	private String name;
-	
 	private String description;
 	
-	public Produit(String n, String d){
-		
-		this.description = d;
-		
+	public void init(String n, String d){	
+		this.description = d;		
 		this.name = n;
-	}
-	
+	}	
 	
 	@Override
 	public String getName() {

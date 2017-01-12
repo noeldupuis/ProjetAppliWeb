@@ -3,13 +3,13 @@ import java.util.List;
 
 public class Itineraire {
 
-	private Magasin magasin;
-	
-	private Point courant;
-	
+	private Magasin magasin;	
+	private Point courant;	
 	private List<Point>  points;
 	
-	public Itineraire(Magasin m){
+	public Itineraire() {}
+	
+	public void init(Magasin m) {
 		this.magasin = m;
 		this.courant = this.magasin.getEntree();
 		
