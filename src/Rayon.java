@@ -72,10 +72,12 @@ public class Rayon {
 	}
 	
 	public List<positionProduitArticle> setPositionsArticles() {
-		List positionCategorieArticle = new ArrayList<positionProduitArticle>();
+		List<positionProduitArticle> positionCategorieArticle = new ArrayList<positionProduitArticle>();
 
 		for (ArticleRayon articleRayon : this.articles) {
-			positionCategorieArticle.add(new positionProduitArticle(articleRayon.getArticle(), this.numero, articleRayon.getPosition()));
+			positionProduitArticle pos = new positionProduitArticle();
+			pos.init(articleRayon.getArticle(), this.numero, articleRayon.getPosition());
+			positionCategorieArticle.add(pos);
 		}
 
 		return positionCategorieArticle;

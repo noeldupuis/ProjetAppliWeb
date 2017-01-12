@@ -1,19 +1,19 @@
 import java.util.Date;
 
-public class Partenaire {
+public class Partenaire implements Compte {
 	
-	private Magasin magasin;
-	
-	private String nom;
-	
+	private Magasin magasin;	
+	private String nom;	
 	private Date adh;
 	
-	public Partenaire(String n, Magasin m, Date d){
+	public Partenaire() {}
+	
+	public void init(String n, Magasin m, Date d) {
 		this.adh = d;
 		this.nom = n;
 		this.magasin = m;
 	}
-
+		
 	public Magasin getMagasin() {
 		return magasin;
 	}

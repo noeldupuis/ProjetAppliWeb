@@ -2,14 +2,13 @@
 
 public class Point {
 
-	private double longitude;
-	
+	private double longitude;	
 	private double latitude;
 	
-	public Point (double longitude, double latitude){
-		
-		this.longitude = longitude;
-		
+	public Point() {}
+	
+	public void init(double longitude, double latitude){	
+		this.longitude = longitude;		
 		this.latitude = latitude;
 	}
 	

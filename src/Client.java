@@ -1,5 +1,5 @@
 
-public class Client {
+public class Client implements Compte {
 
 	private String nom;
 	private String prenom;
@@ -7,7 +7,9 @@ public class Client {
 	private Stats stats;
 	private ListeCourses listeCourses;
 	
-	public Client(String name, String fName, String adress) {
+	public Client() {}
+	
+	public void init(String name, String fName, String adress) {
 		nom = name;
 		prenom = fName;
 		adresse = adress;

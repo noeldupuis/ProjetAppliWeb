@@ -3,29 +3,24 @@ import java.util.List;
 
 public class Categorie implements Article{
 	
-	private String name;
-	
-	private List<Article> articles;
-	
+	private String name;	
+	private List<Article> articles;	
 	private String description;
 	
 	
-	public Categorie (String name, String description){
-		
-		this.name = name;
-		
-		this.description = description;
-		
+	public Categorie() {}
+	
+	public void init(String name, String description) {	
+		this.name = name;		
+		this.description = description;		
 		this.articles = new ArrayList<Article>();
 	}
 	
-	public void addArticle(Article a){
-		
+	public void addArticle(Article a){		
 		this.articles.add(a);
 	}
 	
-	public void remArtile(Article a){
-		
+	public void remArtile(Article a){	
 		this.articles.remove(a);
 	}
 
@@ -39,8 +34,7 @@ public class Categorie implements Article{
 		return this.description;
 	}
 
-	public List<Article> getArticles(){
-		
+	public List<Article> getArticles(){		
 		return this.articles;
 	}
 	
