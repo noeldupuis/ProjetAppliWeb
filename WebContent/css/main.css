@@ -1,7 +1,38 @@
 .vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+	min-height: 75%;
 
-  display: flex;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 } 
+
+html, body {
+    height: 100%;
+}
+body {
+	background-image: url("../img/supermarche01.jpg");
+	background-attachment: fixed;
+}
+
+.container-fluid {
+    height: 100%;
+    overflow-y: hidden; /* don't show content that exceeds my height */
+}
+
+.input-group{
+	display: inline-flex;
+	flex-direction: row;
+}
+
+.formHome {
+	height: 50px;
+}
+
+#Home {
+	background-color: rgba(255,255,255,0.8);
+}
+
+#LeService{
+	background-color: rgba(0,0,0,0.4);
+}
