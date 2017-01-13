@@ -10,6 +10,7 @@
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Poppins|Lemonada|Pacifico|Chewy" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,7 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
-    <body style="font-size: 2em;text-align:justify;">
+    <body style="font-family: 'Poppins';font-size: 2em;text-align:justify;">
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="font-size: 16px;">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -32,16 +33,16 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" style="text-align: center;">
               <li class="nav-item active">
-                <a class="nav-link" href="#Home" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
+                <a class="nav-link scroll-link" data-id="Home" href="#Home" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#LeService" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Le Service</a>
+                <a class="nav-link scroll-link" data-id="Benefits" href="#Benefits" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Benefits</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#LIdee" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">L'idée</a>
+                <a class="nav-link scroll-link" data-id="Supermarkets" href="#Supermarkets" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Supermarkets</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#Contacts" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Contact</a>
+                <a class="nav-link scroll-link" data-id="Contacts" href="#Contacts" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Contact Us</a>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -54,7 +55,7 @@
 
       <div class="container-fluid" id="Home">
         <br/><br/>
-        <div id="login" class="collapse">
+        <div id="login" class="collapse" style="z-index:99;">
           <div class="panel panel-default col-md-2 col-md-offset-10" style="position: absolute; right: 0;">
             <div class="panel-body">
               <form class="form-horizontal" id="itemListe">
@@ -79,18 +80,19 @@
         </div>
 
         <div class="vertical-center">
-          <h1 style="text-align: center;font-size: 3em;">Ever been lost in a supermarket?</h1>
-          <h2 style="text-align: center;font-size: 2em;">We do have the solution!</h2>
-          <div class="container">
+          <h1 style="text-align: center;font-size: 6em;color: #555;font-family: 'Pacifico">Ever been lost in a supermarket?</h1>
+          <h2 style="text-align: center;font-size: 3em;font-family: 'Indie Flower'">We do have the solution!</h2>
+          <div class="container" style="font-family: 'Lemonada'">
+            <p style="text-align:center; font-size: 3em;">Join Us Now!</p>
             <form class="form-horizontal">
               <div class="col-md-5">
-                <input type="text" class="form-control formHome" name="email" placeholder="Email">
+                <input type="text" class="form-control formHome" name="email" placeholder="Email" style="font-size: 30px;height:50px">
               </div>
               <div class="col-md-5">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" style="font-size: 30px;height:50px">
               </div>
               <div class="col-md-2">
-                <input type="button" class="btn btn-primary" value="Sign Up">
+                <input type="button" class="btn btn-primary" value="Sign Up" style="font-size: 30px;height:50px;">
               </div>
             </form>
           </div>
@@ -98,24 +100,34 @@
       </div>
 
 
-      <div class="container-fluid" id="LeService">
-        <h1 class="mb-0" style="text-align: center;">Le service</h1>
-        <h2 style="text-align: center;">Ne perdez plus de temps à faire les courses!</h2>
-        <p>Les courses ne seront plus une perte de temps pour vous, vous trouverez toujours tous vos articles! Et nous vous guiderons sur le chemin le plus rapide!</p>
+      <div class="container-fluid alt" id="Benefits" style="text-align: center;">
+      <br/><br/>
+      <div class="container vertical-center">
+        <div class="container">
+          <h1 class="mb-0" style="font-size: 3em;font-family: 'Chewy'">No more wasted time during your shopping!</h1>
+          <h2 style="text-align: center;">With our service, you'll probably enjoy doing shopping in the mall!</h2>
+        </div>
+        <div class="container">
+          <p>Find the best way to get everything on your shopping list. Give us your list, and we'll find you the fastest way to get everything in the supermarket you choose! Thousands of markets a refferenced, we'll sure have your favorite!</p>
+        </div>
 
-        <div class="col-md-2 col-md-offset-1">
-          <h2>Listez</h2>
+        <div class="container">
+          <div class="col-md-4">
+            <h2>List everything</h2>
+          </div>
+          <div class="col-md-4">
+            <h2>Choose a supermarket</h2>
+          </div>
+          <div class="col-md-4">
+            <h2>Follow the guide!</h2>
+          </div>
         </div>
-        <div class="col-md-2 col-md-offset-2">
-          <h2>Choisissez le magasin</h2>
-        </div>
-        <div class="col-md-2 col-md-offset-2">
-          <h2>Suivez le guide!</h2>
-        </div>
+      </div>
       </div>
 
 
-
+      <div class="container-fluid" id="Supermarkets">
+      </div>  
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
