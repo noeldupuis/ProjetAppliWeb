@@ -63,8 +63,4 @@ function scrollToID(id, speed){
     mainNav.removeClass("open");
   }
 }
-if (typeof console === "undefined") {
-    console = {
-        log: function() { }
-    };
-}
+

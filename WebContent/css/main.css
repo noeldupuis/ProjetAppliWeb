@@ -15,7 +15,7 @@ body {
 	background-attachment: fixed;
 }
 
-.container-fluid {
+.white-alt {
 	height: 100%;
     min-height: 100%;
     /*overflow-y: hidden; /* don't show content that exceeds my height */
@@ -31,7 +31,9 @@ body {
 	height: 50px;
 }
 
-.alt {
+.black-alt {
+	height: 100%;
+    min-height: 100%;
 	background-color: rgba(0,0,0,0.6);
 	color: white;
 }

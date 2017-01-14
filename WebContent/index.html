@@ -11,6 +11,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Poppins|Lemonada|Pacifico|Chewy" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +44,7 @@
                 <a class="nav-link scroll-link" data-id="Supermarkets" href="#Supermarkets" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Supermarkets</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link scroll-link" data-id="Contacts" href="#Contacts" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Contact Us</a>
+                <a class="nav-link scroll-link" data-id="Contact" href="#Contact" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Contact Us</a>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -53,34 +55,36 @@
         </div>
       </nav>
 
-      <div class="container-fluid" id="Home">
-        <br/><br/>
-        <div id="login" class="collapse" style="z-index:99;">
-          <div class="panel panel-default col-md-2 col-md-offset-10" style="position: absolute; right: 0;">
-            <div class="panel-body">
-              <form class="form-horizontal" id="itemListe">
-                <div class="form-group">
-                  <label class="control-label col-sm-5">Email</label>
-                  <div class="col-sm-7">
-                    <input type="text" class="form-control" required>
-                  </div>
+      <div id="login" class="collapse" style="z-index:99;">
+      <br><br>
+        <div class="panel panel-default col-md-2 col-md-offset-10" style="position: fixed; right: 0;">
+          <div class="panel-body">
+            <form class="form-horizontal" id="itemListe">
+              <div class="form-group">
+                <label class="control-label col-sm-5">Email</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" required>
                 </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-5">Mot de passe</label>
-                  <div class="col-sm-7">
-                    <input type="text" class="form-control" required>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-5">Password</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" required>
                 </div>
-                <div class="col-xs-offset-4">
-                  <input type="button" value="Ajouter" class="btn btn-primary" />
-                </div>
-              </form>
-            </div>
+              </div>
+              <div class="col-xs-offset-4">
+                <input type="button" value="Ajouter" class="btn btn-primary" />
+              </div>
+            </form>
           </div>
         </div>
+      </div>
+
+      <div class="container-fluid white-alt" id="Markets">
+        <br/><br/>
 
         <div class="vertical-center">
-          <h1 style="text-align: center;font-size: 6em;color: #555;font-family: 'Pacifico">Ever been lost in a supermarket?</h1>
+          <h1 style="text-align: center;font-size: 6em;color: #555;font-family: 'Chewy'">Ever been lost in a supermarket?</h1>
           <h2 style="text-align: center;font-size: 3em;font-family: 'Indie Flower'">We do have the solution!</h2>
           <div class="container" style="font-family: 'Lemonada'">
             <p style="text-align:center; font-size: 3em;">Join Us Now!</p>
@@ -92,7 +96,7 @@
                 <input type="password" class="form-control" name="password" placeholder="Password" style="font-size: 30px;height:50px">
               </div>
               <div class="col-md-2">
-                <input type="button" class="btn btn-primary" value="Sign Up" style="font-size: 30px;height:50px;">
+                <input type="button" class="btn btn-primary" value="Sign Up" style="font-size: 30px;height:50px;vertical-align: middle;">
               </div>
             </form>
           </div>
@@ -100,7 +104,7 @@
       </div>
 
 
-      <div class="container-fluid alt" id="Benefits" style="text-align: center;">
+      <div class="container-fluid black-alt" id="Benefits" style="text-align: center;">
       <br/><br/>
       <div class="container vertical-center">
         <div class="container">
@@ -113,22 +117,66 @@
 
         <div class="container">
           <div class="col-md-4">
-            <h2>List everything</h2>
+            <h2>List everything</h2><br><br>
+            <i class="material-icons" style="font-size: 3em;">format_list_numbered</i>
           </div>
           <div class="col-md-4">
-            <h2>Choose a supermarket</h2>
+            <h2>Choose a supermarket</h2><br><br>
+            <i class="material-icons" style="font-size: 3em;">local_grocery_store</i>
           </div>
           <div class="col-md-4">
-            <h2>Follow the guide!</h2>
+            <h2>Follow the guide!</h2><br><br>
+            <i class="material-icons" style="font-size: 3em;">directions</i>
           </div>
         </div>
       </div>
       </div>
 
 
-      <div class="container-fluid" id="Supermarkets">
+      <div class="container-fluid white-alt vertical-center" id="Supermarkets">
+      <div class="container">
+        <h1 style="font-size: 3em;font-family: 'Chewy';text-align: center;">Find your supermarket</h1>
+      </div>
+      <div class="container">
+        <div class="col-xs-4 col-xs-offset-4">
+          <a href="magasins.html">
+            <button class="btn btn-primary" style="font-size: 2em; height: 70px; width:100%;">
+              <span class="glyphicon glyphicon-map-marker" style="vertical-align: middle;"></span><span style="vertical-align: middle;"> Locate Me</span>
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="container">
+        <h1 style="font-size: 2em;font-family: 'Chewy'; text-align: center;">You are a supermarket, and you want to join us?</h1>
+        <div class="container" style="display: inline-flex; flex-direction: row; justify-content: center;">
+          <button class="btn btn-success col-xs-3" style="font-size: 2em; height: 70px;">
+            <span class="glyphicon glyphicon-calendar" style="vertical-align: middle;"></span><span style="vertical-align: middle;"> Join us</span>
+          </button>
+        </div>
+      </div>
       </div>  
 
+      <div class="container-fluid black-alt" id="Contact">
+      </div>  
+
+      <div class="container-fluid" style="color: #999;background-color: #2F2F2F;">
+        <div class="container">
+          <div class="col-md-4">
+            <h2 style="text-align: center;">Plan du site</h2>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="lister.html">Build my shopping list</a></li>
+              <li><a href="signIn.html">Connection</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h2 style="text-align: center;">About us</h2>
+          </div>
+          <div class="col-md-4">
+            <h2 style="text-align: center;">Contacts</h2>
+          </div>
+        </div>
+      </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
