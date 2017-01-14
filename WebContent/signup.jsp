@@ -13,6 +13,8 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Poppins|Lemonada|Pacifico|Chewy" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +37,7 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" style="text-align: center;">
               <li class="nav-item active">
-                <a class="nav-link scroll-link" data-id="Home" href="#Home" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
+                <a class="nav-link scroll-link" data-id="Markets" href="#Markets" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link scroll-link" data-id="Benefits" href="#Benefits" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Benefits</a>
@@ -54,9 +56,10 @@
           </div>
         </div>
       </nav>
-
-      <div id="login" class="collapse" style="z-index:99;">
+      <div style="width: 100%;background-color: rgba(255,255,255,0.8);">
       <br><br>
+      </div>
+      <div id="login" class="collapse" style="z-index:99;">
         <div class="panel panel-default col-md-2 col-md-offset-10" style="position: fixed; right: 0;">
           <div class="panel-body">
             <form class="form-horizontal" id="itemListe">
@@ -80,27 +83,39 @@
         </div>
       </div>
 
-      <div class="container-fluid white-alt" id="Home">
-        <br/><br/>
-
-        <div class="vertical-center">
-          <h1>Find your market</h1>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter your location">
-            <div class="input-group-btn">
-              <button class="btn btn-default" onclick="getLocation()">
-                <i class="glyphicon glyphicon-map-marker"></i>
-              </button>
-              <button class="btn btn-default" onclick="getLocation()">
-                <i class="glyphicon glyphicon-search"></i>
-              </button>
-            </div>
+      <div class="container-fluid white-alt" id="Markets">
+        <div class="container">
+          <h1 style="text-align: center;font-size: 6em;color: #555;font-family: 'Chewy'">Nous rejoindre?</h1>
+          <h2 style="text-align: center;font-size: 3em;font-family: 'Indie Flower'">Inscris-toi simplement</h2>
+          <div class="container vertical-center" style="font-family: 'Lemonada'">
+            <form class="form" action="Main" id="mainForm">
+              <div class="form-group col-sm-6">
+                <label class="control-label">Email</label>
+                <input type="text" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%} else {%>placeholder="Email"<%}%>required>
+              </div>
+              <div class="form-group col-sm-6">
+                <label class="control-label"> Confirm email</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="form-group col-sm-6">
+                <label class="control-label">Password</label>
+                  <input type="text" class="form-control" required>
+              </div>
+              <div class="form-group col-sm-6">
+                <label class="control-label">Confirm password</label>
+                  <input type="text" class="form-control" required>
+              </div>
+              <div>
+                <label class="checkbox-inline"><input type="checkbox" value="" required>I agree with Terms and Contions of Use of the service. (required)</label> 
+              </div>
+              <div class="col-xs-offset-4">
+                <input type="hidden" name="action" value="registerClient">
+                <input type="submit" value="S'inscrire" class="btn btn-primary" >
+              </div>
+            </form>
           </div>
         </div>
       </div>
-
-
-        
 
       <div class="container-fluid" style="color: #999;background-color: #2F2F2F;">
         <div class="container">

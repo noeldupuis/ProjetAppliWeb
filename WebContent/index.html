@@ -13,6 +13,8 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Poppins|Lemonada|Pacifico|Chewy" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +37,7 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" style="text-align: center;">
               <li class="nav-item active">
-                <a class="nav-link scroll-link" data-id="Home" href="#Home" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
+                <a class="nav-link scroll-link" data-id="Markets" href="#Markets" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link scroll-link" data-id="Benefits" href="#Benefits" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Benefits</a>
@@ -54,9 +56,10 @@
           </div>
         </div>
       </nav>
-
-      <div id="login" class="collapse" style="z-index:99;">
+      <div style="width: 100%;background-color: rgba(255,255,255,0.8);">
       <br><br>
+      </div>
+      <div id="login" class="collapse" style="z-index:99;">
         <div class="panel panel-default col-md-2 col-md-offset-10" style="position: fixed; right: 0;">
           <div class="panel-body">
             <form class="form-horizontal" id="itemListe">
@@ -81,14 +84,12 @@
       </div>
 
       <div class="container-fluid white-alt" id="Markets">
-        <br/><br/>
-
         <div class="vertical-center">
           <h1 style="text-align: center;font-size: 6em;color: #555;font-family: 'Chewy'">Ever been lost in a supermarket?</h1>
           <h2 style="text-align: center;font-size: 3em;font-family: 'Indie Flower'">We do have the solution!</h2>
           <div class="container" style="font-family: 'Lemonada'">
             <p style="text-align:center; font-size: 3em;">Join Us Now!</p>
-            <form class="form-horizontal">
+            <form method="POST" class="form-horizontal" action="Main" id="mainForm">
               <div class="col-md-5">
                 <input type="text" class="form-control formHome" name="email" placeholder="Email" style="font-size: 30px;height:50px">
               </div>
@@ -96,8 +97,9 @@
                 <input type="password" class="form-control" name="password" placeholder="Password" style="font-size: 30px;height:50px">
               </div>
               <div class="col-md-2">
-                <input type="button" class="btn btn-primary" value="Sign Up" style="font-size: 30px;height:50px;vertical-align: middle;">
+                <input type="submit" class="btn btn-primary" value="Sign Up" style="font-size: 30px;height:50px;vertical-align: middle;">
               </div>
+                <input type="hidden" name="action" value="newRegister">
             </form>
           </div>
         </div>
@@ -118,15 +120,21 @@
         <div class="container">
           <div class="col-md-4">
             <h2>List everything</h2><br><br>
-            <i class="material-icons" style="font-size: 3em;">format_list_numbered</i>
+            <div style="width:100%;height:100px;border-radius: 50%;background-color: rgba(255,255,255,0.8);text-align: center;" class="vertical-center">
+              <i class="material-icons" style="font-size: 3em;color:black;">format_list_numbered</i>
+            </div>
           </div>
           <div class="col-md-4">
             <h2>Choose a supermarket</h2><br><br>
-            <i class="material-icons" style="font-size: 3em;">local_grocery_store</i>
+            <div style="width:100%;height:100px;border-radius: 50%;background-color: rgba(255,255,255,0.8);text-align: center;" class="vertical-center">
+              <i class="material-icons" style="font-size: 3em;color:black;">local_grocery_store</i>
+            </div>
           </div>
           <div class="col-md-4">
             <h2>Follow the guide!</h2><br><br>
-            <i class="material-icons" style="font-size: 3em;">directions</i>
+            <div style="width:100%;height:100px;border-radius: 50%;background-color: rgba(255,255,255,0.8);text-align: center;" class="vertical-center">
+              <i class="material-icons" style="font-size: 3em;color:black;">directions</i>
+            </div>
           </div>
         </div>
       </div>
@@ -140,7 +148,7 @@
       <div class="container">
         <div class="col-xs-4 col-xs-offset-4">
           <a href="magasins.html">
-            <button class="btn btn-primary" style="font-size: 2em; height: 70px; width:100%;">
+            <button class="btn btn-primary" style="font-size: 2em; height: 70px; min-width:100%;">
               <span class="glyphicon glyphicon-map-marker" style="vertical-align: middle;"></span><span style="vertical-align: middle;"> Locate Me</span>
             </button>
           </a>
