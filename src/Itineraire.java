@@ -64,7 +64,7 @@ public class Itineraire {
             PositionProduit positionProduit = null;
 
             for (PositionProduit posprod : positionProduits) {
-                double distanceCourante = posprod.getArticle().getPosition().getDistance(entree);
+                double distanceCourante = posprod.getArticle().getPosition().getDistance(tampon);
                 positionProduit = posprod;
 
                 if (distancePrec > distanceCourante) {
@@ -86,4 +86,5 @@ public class Itineraire {
 
         return produitsTries;
     }
+
 }
