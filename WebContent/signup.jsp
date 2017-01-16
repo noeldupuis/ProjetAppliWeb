@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -62,7 +62,7 @@
       <div id="login" class="collapse" style="z-index:99;">
         <div class="panel panel-default col-md-2 col-md-offset-10" style="position: fixed; right: 0;">
           <div class="panel-body">
-            <form class="form-horizontal" id="itemListe">
+            <form class="form-horizontal" action="Main" method="POST" id="itemListe">
               <div class="form-group">
                 <label class="control-label col-sm-5">Email</label>
                 <div class="col-sm-7">
@@ -88,18 +88,26 @@
           <h1 style="text-align: center;font-size: 6em;color: #555;font-family: 'Chewy'">Nous rejoindre?</h1>
           <h2 style="text-align: center;font-size: 3em;font-family: 'Indie Flower'">Inscris-toi simplement</h2>
           <div class="container vertical-center" style="font-family: 'Lemonada'">
-            <form class="form" action="Main" id="mainForm">
+            <form class="form" action="Main" method="POST" id="mainForm">
               <div class="form-group col-sm-6">
-                <label class="control-label">Email</label>
-                <input type="text" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%} else {%>placeholder="Email"<%}%>required>
+                <label class="control-label">Name</label>
+                <input type="text" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%}%>required>
               </div>
               <div class="form-group col-sm-6">
-                <label class="control-label"> Confirm email</label>
+                <label class="control-label"> First name</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="form-group col-sm-6">
+                <label class="control-label">Email</label>
+                <input type="text" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%}%>required>
+              </div>
+              <div class="form-group col-sm-6">
+                <label class="control-label">Confirm email</label>
                 <input type="text" class="form-control" required>
               </div>
               <div class="form-group col-sm-6">
                 <label class="control-label">Password</label>
-                  <input type="text" class="form-control" required>
+                  <input type="text" class="form-control" <% if (request.getParameter("password")!= null) { %>value="<%=request.getParameter("password")%>"<%}%> required>
               </div>
               <div class="form-group col-sm-6">
                 <label class="control-label">Confirm password</label>
