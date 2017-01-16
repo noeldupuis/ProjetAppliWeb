@@ -9,10 +9,11 @@ public class Itineraire {
 	
 	private List<Point>  points;
 	
-	public Itineraire(Magasin m){
+	public Itineraire(){}
+	
+	public void init(Magasin m) {
 		this.magasin = m;
 		this.courant = this.magasin.getEntree();
-		
 		this.points = new ArrayList<Point>();
 	}
 
@@ -39,8 +40,9 @@ public class Itineraire {
 	/** Constuire la liste des articles à acheter.
 	 * @return la liste triée
 	 */
-	public List<positionProduitArticle> setPositionsArticles() {
-		List positionCategorieArticle = new ArrayList<positionProduitArticle>();
+	public List<PositionProduitArticle> setPositionsArticles() {
+		// Liste des articles et de leur position cf classe PositionProduitArticle
+		List positionProduitArticle = new ArrayList<PositionProduitArticle>();
 
 		// ordre des articles dans le rayon
 		// on attribue un entier qui détermine la position de l'article dans le rayon
@@ -48,26 +50,29 @@ public class Itineraire {
 			int k = 1;
 			for (ArticleRayon articleRayon : rayon.getArticles()) {
 				articleRayon.setPosition(k);
-				// on construit l'objet unique par magasin qui positionne le produit
-				positionProduitArticle positionProduitArticlek = new positionProduitArticle(articleRayon.getArticle(), rayon.getNumero(), articleRayon.getPosition());
-				positionCategorieArticle.add(positionProduitArticlek);
+				// on construit l'objet unique par magasin qui positionne le produit courant
+				PositionProduitArticle positionProduitArticlek = null;
+				positionProduitArticlek.init(articleRayon.getArticle(), rayon.getNumero(), articleRayon.getPosition());
+				// on l'ajoute dans la liste
+				positionProduitArticle.add(positionProduitArticlek);
+				// on passe à l'article suivant
 				k += 1;
 			}
 		}
-		return positionCategorieArticle;
+		return positionProduitArticle;
 	}
 
 	/** Trier une liste de courses selon différents critères.
 	 * Un produit d'une liste peut être lourd, fragile, frais, surgelé...
 	 */
-	public List<positionProduitArticle> sortListeCourse() {
+	public List<PositionProduitArticle> sortListeCourse() {
 		// Listes tampons pour le triage
-		List<positionProduitArticle> listeSurgeles = new ArrayList<positionProduitArticle>();
-		List<positionProduitArticle> listeFragiles = new ArrayList<positionProduitArticle>();
-		List<positionProduitArticle> listeLourds = new ArrayList<positionProduitArticle>();
-		List<positionProduitArticle> listeFrais = new ArrayList<positionProduitArticle>();
+		List<PositionProduitArticle> listeSurgeles = new ArrayList<PositionProduitArticle>();
+		List<PositionProduitArticle> listeFragiles = new ArrayList<PositionProduitArticle>();
+		List<PositionProduitArticle> listeLourds = new ArrayList<PositionProduitArticle>();
+		List<PositionProduitArticle> listeFrais = new ArrayList<PositionProduitArticle>();
 
-		for (positionProduitArticle positionProduitArticle : this.setPositionsArticles()) {
+		for (PositionProduitArticle positionProduitArticle : this.setPositionsArticles()) {
 			if (positionProduitArticle.getCategorie().equals(Caracteristique.SURGELES)) {
 				listeSurgeles.add(positionProduitArticle);
 			}
@@ -82,13 +87,12 @@ public class Itineraire {
 			}
 		}
 		// Concaténation des listes.
-		List<positionProduitArticle> listeTriee = new ArrayList<positionProduitArticle>(listeFragiles);
+		List<PositionProduitArticle> listeTriee = new ArrayList<PositionProduitArticle>(listeFragiles);
 		listeTriee.addAll(listeFrais);
 		listeTriee.addAll(listeSurgeles);
 		listeTriee.addAll(listeLourds);
 
 		return listeTriee;
 	}
-
 
 }

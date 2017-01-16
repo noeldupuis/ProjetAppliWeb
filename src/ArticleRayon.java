@@ -23,7 +23,9 @@ public class ArticleRayon {
 		return position;
 	}
 
-	public void setTaille(int position) {
+
+
+	public void setPosition(int position) {
 		this.position = position;
 	}
 	

@@ -70,16 +70,4 @@ public class Rayon {
 	public Point getExt2(){
 		return this.ext2;
 	}
-	
-	public List<positionProduitArticle> setPositionsArticles() {
-		List<positionProduitArticle> positionCategorieArticle = new ArrayList<positionProduitArticle>();
-
-		for (ArticleRayon articleRayon : this.articles) {
-			positionProduitArticle pos = new positionProduitArticle();
-			pos.init(articleRayon.getArticle(), this.numero, articleRayon.getPosition());
-			positionCategorieArticle.add(pos);
-		}
-
-		return positionCategorieArticle;
-	}
 }

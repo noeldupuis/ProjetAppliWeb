@@ -26,6 +26,8 @@ public class Magasin {
 	public Rayon getRayon(int n) {
 		return this.rayons.get(n);
 	}
+
+	public List<Rayon> getRayons() { return this.rayons; }
 	
 	public void setRayon(Rayon r) {
 		this.rayons.set(r.getNumero(),r);
