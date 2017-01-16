@@ -18,7 +18,6 @@ import javax.persistence.Id;
 public class Stats {
 	
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
 	/** Attributs. */
 	private Map<Article, Integer> statistics;	// liste des articles et leurs occurences
 	

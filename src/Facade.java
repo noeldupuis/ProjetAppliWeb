@@ -35,7 +35,21 @@ public class Facade {
 		return c;
 	}
 	
-	
+	public List<Magasin> localiser(double longitude, double latitude){
+		List<Magasin> l = new ArrayList();
+		
+		double distMax = 100;
+		
+		l = em.createQuery("select m from Magasin", Magasin.class).getResultList();
+		
+		for(Magasin m :l){
+			if( m.distance(longitude, latitude) > distMax){
+				l.remove(m);
+			}
+		}
+		
+		return l;
+	}
 	
 	
 	

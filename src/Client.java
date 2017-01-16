@@ -2,6 +2,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Client implements Compte {
@@ -11,8 +12,10 @@ public class Client implements Compte {
 	private String adresse;
 	private String nom;
 	private String prenom;
-	private Stats stats;
 	private String mdp;
+	
+	@OneToOne
+	private Stats stats;
 	
 	public Client() {}
 	
