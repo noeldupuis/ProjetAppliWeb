@@ -3,6 +3,7 @@ public class Produit implements Article {
 	
 	private String name;
 	private String description;
+	private Point position;
 	
 	public void init(String n, String d){	
 		this.description = d;		
@@ -30,7 +31,13 @@ public class Produit implements Article {
 		this.description = desc;
 		
 	}
-	
-	
 
+
+	public Point getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
+	}
 }

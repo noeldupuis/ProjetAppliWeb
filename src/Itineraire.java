@@ -1,20 +1,22 @@
+import com.sun.corba.se.spi.activation.RepositoryOperations;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Itineraire {
 
 	private Magasin magasin;
-	
 	private Point courant;
-	
-	private List<Point>  points;
+	private ListeCourses listeCourses;
+
 	
 	public Itineraire(){}
 	
 	public void init(Magasin m) {
 		this.magasin = m;
 		this.courant = this.magasin.getEntree();
-		this.points = new ArrayList<Point>();
+		this.listeCourses = null;
+		this.listeCourses.init();
 	}
 
 	public Point getCourant() {
@@ -25,74 +27,63 @@ public class Itineraire {
 		this.courant = courant;
 	}
 
-	public List<Point> getPoints() {
-		return points;
-	}
-
-	public void setPoints(List<Point> points) {
-		this.points = points;
-	}
-
 	public Magasin getMagasin() { return this.magasin; }
 
 	public void setMagasin(Magasin mag){ this.magasin = mag; }
 
-	/** Constuire la liste des articles à acheter.
+    public ListeCourses getListeCourses() { return listeCourses; }
+
+    public List<Produit> getListe() { return this.listeCourses.getListeCourses(); }
+
+    public void setListeCourses(ListeCourses listeCourses) { this.listeCourses = listeCourses; }
+
+	/** Constuire la liste des articles.
 	 * @return la liste triée
 	 */
-	public List<PositionProduitArticle> setPositionsArticles() {
-		// Liste des articles et de leur position cf classe PositionProduitArticle
-		List positionProduitArticle = new ArrayList<PositionProduitArticle>();
+	public List<Produit> sortListe() {
 
-		// ordre des articles dans le rayon
-		// on attribue un entier qui détermine la position de l'article dans le rayon
-		for (Rayon rayon : this.magasin.getRayons()) {
-			int k = 1;
-			for (ArticleRayon articleRayon : rayon.getArticles()) {
-				articleRayon.setPosition(k);
-				// on construit l'objet unique par magasin qui positionne le produit courant
-				PositionProduitArticle positionProduitArticlek = null;
-				positionProduitArticlek.init(articleRayon.getArticle(), rayon.getNumero(), articleRayon.getPosition());
-				// on l'ajoute dans la liste
-				positionProduitArticle.add(positionProduitArticlek);
-				// on passe à l'article suivant
-				k += 1;
-			}
-		}
-		return positionProduitArticle;
-	}
+		// Liste des articles et de leur position
+        List<PositionProduit> positionProduits = null;
+        for (int i=0 ; i < this.getListe().size(); i++) {
+            positionProduits.get(i).init(this.getListe().get(i), this.getListe().get(i).getPosition());
+        }
 
-	/** Trier une liste de courses selon différents critères.
-	 * Un produit d'une liste peut être lourd, fragile, frais, surgelé...
-	 */
-	public List<PositionProduitArticle> sortListeCourse() {
-		// Listes tampons pour le triage
-		List<PositionProduitArticle> listeSurgeles = new ArrayList<PositionProduitArticle>();
-		List<PositionProduitArticle> listeFragiles = new ArrayList<PositionProduitArticle>();
-		List<PositionProduitArticle> listeLourds = new ArrayList<PositionProduitArticle>();
-		List<PositionProduitArticle> listeFrais = new ArrayList<PositionProduitArticle>();
+        // Points de départ et d'arrivée
+        Point entree = this.magasin.getEntree();
+        Point caisses = this.magasin.getCaisses();
 
-		for (PositionProduitArticle positionProduitArticle : this.setPositionsArticles()) {
-			if (positionProduitArticle.getCategorie().equals(Caracteristique.SURGELES)) {
-				listeSurgeles.add(positionProduitArticle);
-			}
-			if (positionProduitArticle.getCategorie().equals(Caracteristique.FRAGILES)) {
-				listeFragiles.add(positionProduitArticle);
-			}
-			if (positionProduitArticle.getCategorie().equals(Caracteristique.LOURD)) {
-				listeLourds.add(positionProduitArticle);
-			}
-			if (positionProduitArticle.getCategorie().equals(Caracteristique.FRAIS)) {
-				listeFrais.add(positionProduitArticle);
-			}
-		}
-		// Concaténation des listes.
-		List<PositionProduitArticle> listeTriee = new ArrayList<PositionProduitArticle>(listeFragiles);
-		listeTriee.addAll(listeFrais);
-		listeTriee.addAll(listeSurgeles);
-		listeTriee.addAll(listeLourds);
+        // Liste à trier
+        List<Produit> produitsTries = null;
 
-		return listeTriee;
-	}
+        Point tampon = entree;
+        Produit produittampon=null;
 
+        for (int i = 0; i < positionProduits.size(); i++) {
+            // On sélectionne le point le plus proche du point précédent
+            double distancePrec = positionProduits.get(i).getPositionsArticle().getDistance(tampon);
+            PositionProduit positionProduit = null;
+
+            for (PositionProduit posprod : positionProduits) {
+                double distanceCourante = posprod.getArticle().getPosition().getDistance(entree);
+                positionProduit = posprod;
+
+                if (distancePrec > distanceCourante) {
+                    // J'ajoute le produit le plus proche à ma liste triée
+                    distancePrec = distanceCourante;
+                    positionProduit = posprod;
+                    tampon = posprod.getPositionsArticle();
+                    produittampon = posprod.getArticle();
+                }
+
+            }
+
+            produitsTries.add(produittampon);
+
+            if (positionProduits.contains(produittampon)) {
+                positionProduits.remove(produittampon);
+            }
+        }
+
+        return produitsTries;
+    }
 }

@@ -4,6 +4,8 @@ public interface Article {
 	String getName();
 	
 	String getDescription();
+
+
 	
 	void setName(String name);
 	

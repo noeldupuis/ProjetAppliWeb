@@ -3,30 +3,31 @@ import java.util.List;
 
 public class ListeCourses {
 
-	private List<Article> listeCourses;
+	private List<Produit> listeCourses;
 	
 	public ListeCourses() {}
 	
 	public void init() {
-		setListeCourses(new ArrayList<Article>());
+		setListeCourses(new ArrayList<Produit>());
 	}
 	
-	public void ajouterArticle(Article article) {
+	public void ajouterArticle(Produit article) {
 		listeCourses.add(article);
 	}
 	
-	public void supprimerArticle(Article article) {
+	public void supprimerArticle(Produit article) {
 		if (listeCourses.contains(article)){
 			listeCourses.remove(article);
 		}
 	}
 
-	public List<Article> getListeCourses() {
+	public List<Produit> getListeCourses() {
 		return listeCourses;
 	}
 
-	public void setListeCourses(List<Article> listeCourses) {
+	public void setListeCourses(List<Produit> listeCourses) {
 		this.listeCourses = listeCourses;
 	}
-	
+
+
 }
