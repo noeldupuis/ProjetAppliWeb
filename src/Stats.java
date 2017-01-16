@@ -9,8 +9,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Stats {
 	
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	/** Attributs. */
 	private Map<Article, Integer> statistics;	// liste des articles et leurs occurences
 	

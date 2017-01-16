@@ -1,66 +1,42 @@
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Singleton
 public class Facade {
 
-	public void seConnecter(String login, String mdp){
+	@PersistenceContext
+	EntityManager em;
+	
+	public boolean subscribe( String nom, String prenom, String adresse, String mdp ){
+		Client c = new Client();
 		
+		boolean done = false;
+		
+		if(em.createQuery("select c from Client c where c.adresse like" + adresse, Client.class).getResultList().get(0) == null){
+			c.init(nom, prenom, adresse,mdp);
+			done = true;
+			em.persist(c);
+		}
+		
+		return done;
 	}
 	
-	public void seDeconnecter(){
+	public Client getSubscriber(String a){
 		
+		Client c;
+		c = em.createQuery("select c from Client c where c.adresse like" + a, Client.class).getResultList().get(0);
+		
+		return c;
 	}
 	
-	public void seLocaliser(double longitude, double latitude){
-		
-	}
 	
-	public void choisirMagasin(Magasin m){
-		
-	}
 	
-	public void ajouterArticleListe(ArticleRayon a, ListeCourses l){
-		
-	}
-	
-	public void supprimerArticleListe(ArticleRayon a, ListeCourses l){
-		
-	}
-	
-	public void validerArticle(ArticleRayon a, ListeCourses l){
-		
-	}
-	
-	public void changerMdp(String newMpd){
-		
-	}
-	
-	public void deplacerRayon(Point newP1, Point newP2){
-		
-	}
-	
-	public void prendreRdvMaj(Date d){
-		
-	}
-	
-	public void prendreRdvCreation(Date d){
-		
-	}
-	
-	public List<ArticleRayon> getListe(){
-		List<ArticleRayon> l = new ArrayList<ArticleRayon>();
-		
-		return l;
-	}
-	
-	public void deplacerArticle (ArticleRayon a, Rayon r, int position){
-		
-	}
-	
-	public void commencerCourses(){
-		
-	}
 	
 	
 }

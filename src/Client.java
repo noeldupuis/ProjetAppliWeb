@@ -1,20 +1,27 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Client implements Compte {
-
+	
+	@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+	private String adresse;
 	private String nom;
 	private String prenom;
-	private String adresse;
 	private Stats stats;
-	private ListeCourses listeCourses;
+	private String mdp;
 	
 	public Client() {}
 	
-	public void init(String name, String fName, String adress) {
+	public void init(String name, String fName, String adress, String password) {
 		nom = name;
 		prenom = fName;
 		adresse = adress;
 		stats = new Stats();
-		listeCourses = new ListeCourses();
+		this.mdp = password;
 	}
 
 	public String getNom() {
@@ -49,12 +56,12 @@ public class Client implements Compte {
 		this.stats = stats;
 	}
 
-	public ListeCourses getListeCourses() {
-		return listeCourses;
+	public String getMdp() {
+		return mdp;
 	}
 
-	public void setListeCourses(ListeCourses listeCourses) {
-		this.listeCourses = listeCourses;
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 	
 }

@@ -1,8 +1,20 @@
 import java.util.ArrayList;
+
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 
 public class Magasin {
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	
+	private String name;
 	private List<Rayon> rayons;	
 	private Point positionEntree; //poisition absolue du magasin	
 	private Point caisses;
@@ -51,6 +63,14 @@ public class Magasin {
 
 	public void setCaisses(Point caisses) {
 		this.caisses = caisses;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
