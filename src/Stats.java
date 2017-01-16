@@ -10,8 +10,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity

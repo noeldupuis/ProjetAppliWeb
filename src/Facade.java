@@ -36,7 +36,7 @@ public class Facade {
 	}
 	
 	public List<Magasin> localiser(double longitude, double latitude){
-		List<Magasin> l = new ArrayList();
+		List<Magasin> l = new ArrayList<Magasin>();
 		
 		double distMax = 100;
 		
@@ -44,6 +44,22 @@ public class Facade {
 		
 		for(Magasin m :l){
 			if( m.distance(longitude, latitude) > distMax){
+				l.remove(m);
+			}
+		}
+		
+		return l;
+	}
+	
+	public List<Magasin> choisirMagasin(String recherche){
+		List<Magasin> l = new ArrayList<Magasin>();
+		
+		l = null;
+		
+		l = em.createQuery("select m from Magasin", Magasin.class).getResultList();
+				
+		for(Magasin m : l){
+			if( !m.getName().contains(recherche) ){
 				l.remove(m);
 			}
 		}
