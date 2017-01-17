@@ -1,12 +1,23 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Rayon {
 
+	@Id
+	@GeneratedValue
+	private int id;
 	private int numero;
 	private List<ArticleRayon> articles;
 	private int longueur;
+	@OneToOne
 	private Point ext1;
+	@OneToOne
 	private Point ext2;
 	
 	public Rayon(int n, int l, Point e1, Point e2){
