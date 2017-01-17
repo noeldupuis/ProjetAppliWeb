@@ -45,7 +45,7 @@ public class Facade {
 		
 		double distMax = 100;
 		
-		l = em.createQuery("select m from Magasin", Magasin.class).getResultList();
+		l = em.createQuery("select m from Magasin m", Magasin.class).getResultList();
 		
 		for(Magasin m :l){
 			if( m.distance(longitude, latitude) > distMax){
@@ -61,7 +61,7 @@ public class Facade {
 		
 		l = null;
 		
-		l = em.createQuery("select m from Magasin", Magasin.class).getResultList();
+		l = em.createQuery("select m from Magasin m", Magasin.class).getResultList();
 				
 		for(Magasin m : l){
 			if( !m.getName().contains(recherche) ){
@@ -118,5 +118,7 @@ public class Facade {
 		catch(IndexOutOfBoundsException e){}
 		
 	}
+	
+	
 	
 }
