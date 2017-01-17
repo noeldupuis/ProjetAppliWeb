@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -40,7 +39,6 @@ public class Magasin {
 	}
 	
 	public double distance(double lon1, double lat1){
-		double d;
 		double R = 6372.8; // rayon de la terre
 		double lat2 = this.latitude;
 		double lon2 = this.longitude;
