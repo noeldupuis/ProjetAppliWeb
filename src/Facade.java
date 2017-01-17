@@ -17,7 +17,7 @@ public class Facade {
 		
 		boolean done = false;
 		
-		if(em.createQuery("select c from Client c where c.adresse like " + adresse, Client.class).getResultList().get(0) == null){
+		if(em.createQuery("select c from Client c where c.adresse = " + adresse, Client.class).getResultList().get(0) == null){
 			c.init(nom, prenom, adresse,mdp);
 			done = true;
 			em.persist(c);
@@ -30,7 +30,7 @@ public class Facade {
 		
 		Client c = null;
 		try{
-			c = em.createQuery("select c from Client c where c.adresse like " + a, Client.class).getResultList().get(0);
+			c = em.createQuery("select c from Client c where c.adresse = " + a, Client.class).getResultList().get(0);
 		}
 		catch(IndexOutOfBoundsException e){}
 		
@@ -69,6 +69,15 @@ public class Facade {
 		return l;
 	}
 	
-	
+	public List<Produit> getProductList(String a){
+		
+		Client c = null;
+		try{
+			c = em.createQuery("select c from Client c where c.adresse = " + a, Client.class).getResultList().get(0);
+		}
+		catch(IndexOutOfBoundsException e){}
+		
+		List<Produit> l = c.getListeCourses()
+	}
 	
 }
