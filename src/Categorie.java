@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categorie implements Article{
+public class Categorie extends Article{
 	
 	private String name;	
 	private List<Article> articles;	

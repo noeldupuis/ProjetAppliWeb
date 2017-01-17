@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,6 +14,8 @@ public class Rayon {
 	@GeneratedValue
 	private int id;
 	private int numero;
+	
+	@OneToMany
 	private List<ArticleRayon> articles;
 	private int longueur;
 	@OneToOne

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Magasin {
 	
 	private String name;
 	
-	@OneToMany
+	@ElementCollection
 	private List<Rayon> rayons;	
 	
 	@OneToOne

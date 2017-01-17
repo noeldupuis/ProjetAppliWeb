@@ -3,9 +3,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Produit implements Article {
+public class Produit extends Article {
 	
-	@Id
 	private String name;
 	private String description;
 	@OneToOne

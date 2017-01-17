@@ -1,22 +1,24 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Stats {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	int num;
+	
 	/** Attributs. */
+	@OneToMany
 	private List<ArticlePondere> statistics;	// liste des articles et leurs occurences
 	
 	
