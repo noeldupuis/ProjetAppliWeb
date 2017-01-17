@@ -16,7 +16,7 @@ public class Rayon {
 	private int numero;
 	
 	@OneToMany
-	private List<ArticleRayon> articles;
+	private List<Produit> articles;
 	private int longueur;
 	@OneToOne
 	private Point ext1;
@@ -30,10 +30,10 @@ public class Rayon {
 		this.ext1 = e1;
 		this.ext2 = e2;
 		
-		this.articles = new ArrayList<ArticleRayon>();
+		this.articles = new ArrayList<Produit>();
 	}
 	
-	public Rayon(int n, int l, List<ArticleRayon> liste){
+	public Rayon(int n, int l, List<Produit> liste){
 		this.numero = n;
 		this.longueur = l;
 		
@@ -61,7 +61,7 @@ public class Rayon {
 		this.numero = n;
 	}
 	
-	public void setArticles(List<ArticleRayon> liste){
+	public void setArticles(List<Produit> liste){
 		this.articles = liste;
 	}
 	
@@ -73,7 +73,7 @@ public class Rayon {
 		return this.longueur;
 	}
 	
-	public List<ArticleRayon> getArticles(){
+	public List<Produit> getArticles(){
 		return this.articles;
 	}
 	

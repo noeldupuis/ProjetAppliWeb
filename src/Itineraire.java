@@ -84,14 +84,29 @@ public class Itineraire {
 	public String toString() {
 		List<PositionProduit> list = new ArrayList<PositionProduit>();
 		list = this.sortList();
-		String s = "Liste des produits par ordre : \n";
+		String s = "Itinéraire : \n";
 		for (PositionProduit pp : list) {
-			s += pp.getArticle().getName() + "\n";
+			int n = this.matchRayon(pp);
+			s += "  - Cherchez " + pp.getArticle().getName() + " dans le rayon n°" + n + " \n";
 		}
+		s += "Fin de l'itinéraire.";
 		return s;
 	}
 	
 	
+	public int matchRayon(PositionProduit pp) {
+		int n = 0;
+		for (Rayon r : this.magasin.getRayons()) {
+			for (Produit p : r.getArticles()) {
+				if (pp.getArticle() == p) {
+					n = r.getNumero();
+					break;
+				}
+			}
+		}
+		return n;
+	}
+
 	public static void main(String args[]) {		
 		Magasin m = new Magasin();
 		m.init(1.0, 2.0);
