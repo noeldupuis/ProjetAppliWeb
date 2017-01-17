@@ -42,8 +42,8 @@ public class Magasin {
 		List<Produit> l = new ArrayList<Produit>();
 		
 		for(Rayon r : rayons){
-			for(ArticleRayon a : r.getArticles()){
-				l.add(a.getArticle());
+			for(Produit p : r.getArticles()){
+				l.add(p);
 			}
 		}
 		return l;
