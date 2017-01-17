@@ -86,4 +86,24 @@ public class Facade {
 		
 	}
 	
+	public List<Produit> productMagasin(int id){
+		
+		List<Produit> l = new ArrayList<Produit>();
+		
+		Magasin m = null;
+		
+		try{
+			m = em.createQuery("select m from Magasin m where m.num = '" + id + "'", Magasin.class).getResultList().get(0);
+		}
+		catch(IndexOutOfBoundsException e){}
+		
+		l = m.allProducts();
+		
+		return l;
+	}
+	
+	public void registerProductList(String adresse, List<Produit> liste){
+		Client c = null;
+	}
+	
 }
