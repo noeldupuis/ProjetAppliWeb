@@ -3,6 +3,7 @@ import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,8 +34,13 @@ public class Main extends HttpServlet {
 								String email = request.getParameter("email");
 								String password = request.getParameter("password");
 								facade.subscribe(nom, fnom, email, password);
+								request.getRequestDispatcher("index.jsp").forward(request, response);
 								break;
 		case "newRegister": request.getRequestDispatcher("signup.jsp").forward(request, response);
+		case "login": Client c = facade.getSubscriber(request.getParameter("email"));
+					  response.addCookie(new Cookie("name", c.getNom()));
+					  response.addCookie(new Cookie("fname", c.getPrenom()));
+					  request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 	}
 

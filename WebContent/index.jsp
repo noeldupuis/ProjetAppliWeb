@@ -1,3 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<% String name = null;
+String fname = null;
+for (Cookie c: request.getCookies()) {
+	if (c.getName().equals("name")) {
+		name = c.getValue();
+	}
+	if (c.getName().equals("fname")) {
+		fname = c.getValue();
+	}
+}%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +52,7 @@
               <li class="nav-item active">
                 <a class="nav-link scroll-link" data-id="Markets" href="#Markets" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
               </li>
+              <% if (name == null || fname == null) { %>
               <li class="nav-item">
                 <a class="nav-link scroll-link" data-id="Benefits" href="#Benefits" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Benefits</a>
               </li>
@@ -48,23 +62,28 @@
               <li class="nav-item">
                 <a class="nav-link scroll-link" data-id="Contact" href="#Contact" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Contact Us</a>
               </li>
+              <%} else { %>
               <li class="nav-item">
                 <a class="nav-link" href="lister.html">Make a list</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="magasins.html">Get my shop</a>
               </li>
+              <%} %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+            <% if (name == null || fname == null) { %>
               <li class="nav-item"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               <li class="nav-item"><a data-toggle="collapse" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              <li class="nav-item"><a href="#" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">John Doe <span class="caret"></span></a>
+            <%} else { %>
+              <li class="nav-item"><a href="#" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><%=fname%> <%=name%> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">My profile</a></li>
                   <li class="divider"></li>
                   <li><a href="#">Disconnect</a></li>
                 </ul>
               </li>
+             <% } %>
             </ul>
           </div>
         </div>
@@ -79,7 +98,7 @@
               <div class="form-group">
                 <label class="control-label col-sm-5">Email</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" required>
+                  <input type="text" name="email" class="form-control" required>
                 </div>
               </div>
               <div class="form-group">
@@ -89,6 +108,7 @@
                 </div>
               </div>
               <div class="col-xs-offset-4">
+              	<input type="hidden" name="action" value="login" />
                 <input type="submit" value="Se connecter"" class="btn btn-primary" />
               </div>
             </form>
