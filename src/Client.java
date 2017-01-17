@@ -9,6 +9,8 @@ public class Client implements Compte {
 	
 	@Id
 @GeneratedValue(strategy=GenerationType.AUTO)
+	private int num;
+	
 	private String adresse;
 	private String nom;
 	private String prenom;
@@ -23,11 +25,11 @@ public class Client implements Compte {
 	public Client() {}
 	
 	public void init(String name, String fName, String adress, String password) {
-		nom = name;
-		prenom = fName;
-		adresse = adress;
-		stats = new Stats();
-		this.mdp = password;
+		this.setNom(name);
+		this.setPrenom(fName);;
+		this.setAdresse(adress);
+		//stats = new Stats();
+		this.setMdp(password);
 	}
 
 	public String getNom() {

@@ -91,15 +91,15 @@
             <form class="form" action="Main" method="POST" id="mainForm">
               <div class="form-group col-sm-6">
                 <label class="control-label">Name</label>
-                <input type="text" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%}%>required>
+                <input type="text" name="name" class="form-control" required>
               </div>
               <div class="form-group col-sm-6">
                 <label class="control-label"> First name</label>
-                <input type="text" class="form-control" required>
+                <input type="text" name="fname" class="form-control" required>
               </div>
               <div class="form-group col-sm-6">
                 <label class="control-label">Email</label>
-                <input type="text" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%}%>required>
+                <input type="text" name="email" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%}%>required>
               </div>
               <div class="form-group col-sm-6">
                 <label class="control-label">Confirm email</label>
@@ -107,7 +107,7 @@
               </div>
               <div class="form-group col-sm-6">
                 <label class="control-label">Password</label>
-                  <input type="text" class="form-control" <% if (request.getParameter("password")!= null) { %>value="<%=request.getParameter("password")%>"<%}%> required>
+                  <input type="text" name="password" class="form-control" <% if (request.getParameter("password")!= null) { %>value="<%=request.getParameter("password")%>"<%}%> required>
               </div>
               <div class="form-group col-sm-6">
                 <label class="control-label">Confirm password</label>
