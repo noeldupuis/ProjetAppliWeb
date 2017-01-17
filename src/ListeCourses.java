@@ -21,6 +21,10 @@ public class ListeCourses {
 		}
 	}
 
+	public int getSize() {
+		return listeCourses.size();
+	}
+	
 	public List<Produit> getListeCourses() {
 		return listeCourses;
 	}
