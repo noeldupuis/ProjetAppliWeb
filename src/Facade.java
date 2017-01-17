@@ -80,9 +80,10 @@ public class Facade {
 		}
 		catch(IndexOutOfBoundsException e){}
 		
-		//List<Produit> l = c.getListeCourses();
+		List<Produit> l = c.getListeCourses().getListeCourses();
 		
-		return null;
+		return l;
+		
 	}
 	
 }
