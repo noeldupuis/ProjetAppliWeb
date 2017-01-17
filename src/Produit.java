@@ -1,8 +1,14 @@
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Produit implements Article {
 	
+	@Id
 	private String name;
 	private String description;
+	@OneToOne
 	private Point position;
 	
 	public void init(String n, String d){	
