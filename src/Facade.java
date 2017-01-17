@@ -104,7 +104,18 @@ public class Facade {
 	
 	public void registerProductList(String adresse, List<Produit> liste){
 		Client c = null;
+		ListeCourses l = new ListeCourses();
+		l.init();
+		l.setListeCourses(liste);
 		
+		try{
+			c = em.createQuery("select c from Client c where c.adresse = '" + adresse + "'", Client.class).getResultList().get(0);
+			
+			em.getTransaction().begin();
+			c.setListeCourses(l);
+			em.getTransaction().commit();
+		}
+		catch(IndexOutOfBoundsException e){}
 		
 	}
 	
