@@ -81,16 +81,16 @@ public class Itineraire {
 		return sortedList;		
 	}
 	
-	public String toString() {
+	public List<String> toStrings() {
 		List<PositionProduit> list = new ArrayList<PositionProduit>();
+		List<String> strings = new ArrayList<String>();
 		list = this.sortList();
-		String s = "Itinéraire : \n";
 		for (PositionProduit pp : list) {
 			int n = this.matchRayon(pp);
-			s += "  - Cherchez " + pp.getArticle().getName() + " dans le rayon n°" + n + " \n";
+			String s = "Prendre " + pp.getArticle().getName() + " dans le rayon n°" + n;
+			strings.add(s);
 		}
-		s += "Fin de l'itinéraire.";
-		return s;
+		return strings;
 	}
 	
 	
