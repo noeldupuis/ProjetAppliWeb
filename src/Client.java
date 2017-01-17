@@ -15,6 +15,9 @@ public class Client implements Compte {
 	private String mdp;
 	
 	@OneToOne
+	private ListeCourses listeCourses;
+	
+	@OneToOne
 	private Stats stats;
 	
 	public Client() {}
@@ -65,6 +68,14 @@ public class Client implements Compte {
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public ListeCourses getListeCourses() {
+		return listeCourses;
+	}
+
+	public void setListeCourses(ListeCourses listeCourses) {
+		this.listeCourses = listeCourses;
 	}
 	
 }

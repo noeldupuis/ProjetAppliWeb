@@ -1,8 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class ListeCourses {
 
+	@Id
+	@GeneratedValue
+	private int id;
+
+	@OneToOne
 	private List<Produit> listeCourses;
 	
 	public ListeCourses() {}

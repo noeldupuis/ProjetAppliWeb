@@ -29,8 +29,11 @@ public class Facade {
 	
 	public Client getSubscriber(String a){
 		
-		Client c;
-		c = em.createQuery("select c from Client c where c.adresse like" + a, Client.class).getResultList().get(0);
+		Client c = null;
+		try{
+			c = em.createQuery("select c from Client c where c.adresse like" + a, Client.class).getResultList().get(0);
+		}
+		catch(IndexOutOfBoundsException e){}
 		
 		return c;
 	}
