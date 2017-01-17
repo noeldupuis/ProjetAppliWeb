@@ -10,6 +10,7 @@ public class Facade {
 
 	@PersistenceContext
 	EntityManager em;
+	private int compteur;
 	
 	public boolean subscribe( String nom, String prenom, String adresse, String mdp ){
 		Client c = new Client();
@@ -32,11 +33,18 @@ public class Facade {
 		
 		Client c = null;
 		try{
-			c = em.createQuery("select c from Client c where c.adresse = '" + a + "' and c.mdp = '" + a + "'", Client.class).getResultList().get(0);
+			c = em.createQuery("select c from Client c where c.adresse = '" + a + "' and c.mdp = '" + mdp + "'	", Client.class).getResultList().get(0);
 		}
 		catch(IndexOutOfBoundsException e){}
 		
 		return c;
+	}
+	
+	public void createMagasin() {
+		Magasin m = new Magasin();
+		m.init(0, 0, "Toulouse"+compteur);
+		compteur++;
+		em.persist(m);
 	}
 	
 	public List<Magasin> localiser(double longitude, double latitude){

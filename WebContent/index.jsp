@@ -113,7 +113,7 @@ for (Cookie c: request.getCookies()) {
               <div class="form-group">
                 <label class="control-label col-sm-5">Password</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" required>
+                  <input type="text" name="password" class="form-control" required>
                 </div>
               </div>
               <div class="col-xs-offset-4">
@@ -199,9 +199,9 @@ for (Cookie c: request.getCookies()) {
       <div class="container">
         <h1 style="font-size: 2em;font-family: 'Chewy'; text-align: center;">You are a supermarket, and you want to join us?</h1>
         <div class="container" style="display: inline-flex; flex-direction: row; justify-content: center;">
-          <button class="btn btn-success col-xs-3" style="font-size: 2em; height: 70px;">
+          <a href="Main?action=generateMagasin" class="btn btn-success col-xs-3" style="font-size: 2em; height: 70px;">
             <span class="glyphicon glyphicon-calendar" style="vertical-align: middle;"></span><span style="vertical-align: middle;"> Join us</span>
-          </button>
+          </a>
         </div>
       </div>
       </div>  

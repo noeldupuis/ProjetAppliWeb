@@ -15,6 +15,7 @@
         <class>Client</class>
         <class>Stats</class>
         <class>Point</class>
+        <class>Magasin</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

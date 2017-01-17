@@ -44,7 +44,7 @@ public class Main extends HttpServlet {
 						if (c!=null) {
 							response.addCookie(new Cookie("name", c.getNom()));
 							response.addCookie(new Cookie("fname", c.getPrenom()));
-							request.setAttribute("erreur", "1");
+							request.setAttribute("erreur", "0");
 						}
 						else {
 							request.setAttribute("erreur", "1");
@@ -71,13 +71,12 @@ public class Main extends HttpServlet {
 						break;
 		case "GPS": List<Magasin> liste = facade.localiser(Double.parseDouble(request.getParameter("longitude")),Double.parseDouble(request.getParameter("latitude")));
 							request.setAttribute("magasins", liste);
-							request.getSession().setAttribute("REFRESH","TRUE");
 							request.getRequestDispatcher("magasins.jsp").forward(request, response);
 							break;
+		case "generateMagasin": facade.createMagasin(); request.getRequestDispatcher("index.jsp").forward(request, response); break;
 		case "location": String loc = request.getParameter("location");
 							List<String> listeL = facade.nomsMagasin(loc);
 							request.setAttribute("magasins", listeL);
-							request.getSession().setAttribute("REFRESH","TRUE");
 							request.getRequestDispatcher("magasins.jsp").forward(request, response);
 							break;
 						

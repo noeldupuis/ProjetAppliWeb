@@ -2,16 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="java.util.List"%>
-
-<% 
-if(session.getAttribute("REFRESH")!=null){
-	session.removeAttribute("REFRESH");
-    response.sendRedirect("../EasyShopping");
-}
-else{    
-session.setAttribute("REFRESH","TRUE");
-}
-%>   
+ 
 <% String name = null;
 String fname = null;
 for (Cookie c: request.getCookies()) {
@@ -61,7 +52,7 @@ for (Cookie c: request.getCookies()) {
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" style="text-align: center;">
               <li class="nav-item active">
-                <a class="nav-link scroll-link" data-id="Markets" href="Main?action=welcome" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
+                <a class="nav-link" href="Main?action=welcome" >Home</a>
               </li>
               <% if (name == null || fname == null) { %>
               <li class="nav-item">
@@ -115,7 +106,7 @@ for (Cookie c: request.getCookies()) {
               <div class="form-group">
                 <label class="control-label col-sm-5">Password</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" required>
+                  <input type="text" name="password" class="form-control" required>
                 </div>
               </div>
               <div class="col-xs-offset-4">
@@ -149,25 +140,27 @@ for (Cookie c: request.getCookies()) {
 	          </div>
 	        </form>
 	        
-	        <div class="col-xs-8 col-xs-offset-2)">
-              <div class="table-responsive">
-                <table class="table table-hover" id="liste">
-                  <thead>
-                  	<tr>
-				        <th>Magasin</th>
-				    </tr>
-                  </thead>
-                  <tbody>
-                  <% List<String> mag = (List<String>) request.getAttribute("magasins");
-                  if(mag!=null){
-                  	for (String m: mag) {%>
-                  	<tr>
-				        <th><%=m %></th>
-				    </tr>
-				 	<%} }%>
-                  </tbody>
-                </table>
-              </div>
+	        <div class="col-xs-8 col-xs-offset-2">
+		        <div class="panel panel-default">
+		        	<div class="panel-heading">
+		        	Magasin
+		        	</div>
+		        	<div class="panel-body"></div>
+			              <div class="table-responsive">
+			                <table class="table table-hover" id="liste">
+			                  <tbody>
+			                  <% List<String> mag = (List<String>) request.getAttribute("magasins");
+			                  if(mag!=null){
+			                  	for (String m: mag) {%>
+			                  	<tr>
+							        <th><%=m %></th>
+							    </tr>
+							 	<%} }%>
+			                  </tbody>
+			                </table>
+			              </div>
+	              	</div>
+	            </div>
             </div>
         </div>
       </div>

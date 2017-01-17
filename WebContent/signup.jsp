@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<% 
-if(session.getAttribute("REFRESH")!=null){
-	session.removeAttribute("REFRESH");
-    response.sendRedirect("../EasyShopping");
-}
-else{    
-session.setAttribute("REFRESH","TRUE");
-}
-%>   
+   
 <% String name = null;
 String fname = null;
 for (Cookie c: request.getCookies()) {
@@ -113,7 +104,7 @@ for (Cookie c: request.getCookies()) {
               <div class="form-group">
                 <label class="control-label col-sm-5">Password</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" required>
+                  <input type="text" name="password" class="form-control" required>
                 </div>
               </div>
               <div class="col-xs-offset-4">

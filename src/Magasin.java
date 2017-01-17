@@ -32,10 +32,11 @@ public class Magasin {
 	
 	public Magasin() {}
 	
-	public void init(double lon, double lat ) {
+	public void init(double lon, double lat, String nom) {
 		this.rayons = new ArrayList<Rayon>();
 		this.longitude = lon;
 		this.latitude = lat;
+		this.name = nom;
 	}
 	
 	public List<Produit> allProducts(){
