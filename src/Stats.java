@@ -17,27 +17,27 @@ public class Stats {
 	
 	@Id
 	/** Attributs. */
-	private Map<Article, Integer> statistics;	// liste des articles et leurs occurences
+	private List<ArticlePondere> statistics;	// liste des articles et leurs occurences
 	
 	
 	/** Construit Stats. */
 	public Stats() {}
 	
 	public void init() {
-		statistics = new HashMap<Article, Integer>();
+		statistics = new ArrayList<ArticlePondere>();
 	}
 
 	/** Getter de statistics.
 	 * @return statistics
 	 */
-	public Map<Article, Integer> getStatistiques() {
+	public List<ArticlePondere> getStatistiques() {
 		return statistics;
 	}
 
 	/** Setter de statistics.
 	 * @param statistiques
 	 */
-	public void setStatistics(Map<Article, Integer> statistiques) {
+	public void setStatistics(List<ArticlePondere> statistiques) {
 		this.statistics = statistiques;
 	}
 	
@@ -47,13 +47,13 @@ public class Stats {
 	 */
 	public void majStats(Article article, int occurence) {
 		if (!statistics.containsKey(article)) {
-			statistics.put(article, occurence);
+			ArticlePondere articleP= new ArticlePondere();
+			articleP.init(article, occurence);
+			statistics.add(articleP);
 		} else {
-			Iterator<Entry<Article, Integer>> it = statistics.entrySet().iterator();
-			while (it.hasNext()) {
-				Entry<Article, Integer> pair = it.next();
-				if (pair.getKey() == article) {
-					pair.setValue(pair.getValue() + occurence);
+			for (ArticlePondere ap : statistics) {
+				if (ap.getArticle == article) {
+					ap.setOccurence(ap.getOccurence() + occurence);
 				}
 			}
 		}
@@ -73,7 +73,6 @@ public class Stats {
 		// Itérer sur la map pour récupérer les articles
 		Iterator<Entry<Article, Integer>> it = statistics.entrySet().iterator();
 		while (it.hasNext()) {
-			System.out.println("iteration");
 			Entry<Article, Integer> pair = it.next();
 			list.add(pair.getKey());
 		}
