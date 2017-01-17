@@ -104,6 +104,8 @@ public class Facade {
 	
 	public void registerProductList(String adresse, List<Produit> liste){
 		Client c = null;
+		
+		
 	}
 	
 }
