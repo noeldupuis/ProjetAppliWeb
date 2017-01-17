@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -16,8 +17,11 @@ import javax.persistence.Id;
 public class Stats {
 	
 	@Id
+	int num;
+	
 	/** Attributs. */
-	private Map<Article, Integer> statistics;	// liste des articles et leurs occurences
+	@ElementCollection(targetClass=ArticlePondere.class)
+	private List<ArticlePondere> statistics;	// liste des articles et leurs occurences
 	
 	
 	/** Construit Stats. */
