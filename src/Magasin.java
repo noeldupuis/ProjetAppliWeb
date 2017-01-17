@@ -1,11 +1,13 @@
 import java.util.ArrayList;
-
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 
@@ -13,10 +15,17 @@ public class Magasin {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+	int num;
 	
 	private String name;
+	
+	@ElementCollection
 	private List<Rayon> rayons;	
+	
+	@OneToOne
 	private Point positionEntree; //poisition absolue du magasin	
+	
+	@OneToOne
 	private Point caisses;
 	
 	private double longitude;
