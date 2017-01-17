@@ -10,9 +10,10 @@ public class Produit extends Article {
 	@OneToOne
 	private Point position;
 	
-	public void init(String n, String d){	
+	public void init(String n, String d, Point p){	
 		this.description = d;		
 		this.name = n;
+		this.position = p;
 	}	
 	
 	@Override
