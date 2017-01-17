@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.ejb.Singleton;
@@ -71,7 +70,21 @@ public class Facade {
 		
 		return l;
 	}
-	
+	public List<String> nomsMagasin(String recherche){
+		List<Magasin> l = new ArrayList<Magasin>();
+		List<String> l2 = new ArrayList<String>();
+		l = null;
+		
+		l = em.createQuery("select m from Magasin m", Magasin.class).getResultList();
+		
+		for(Magasin m : l){
+			if( m.getName().contains(recherche) ){
+				l2.add(m.getName());
+			}
+		}
+		
+		return l2;
+	}
 	public List<Produit> getProductList(String a){
 		
 		Client c = null;

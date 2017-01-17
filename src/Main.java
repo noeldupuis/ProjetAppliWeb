@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -36,11 +38,49 @@ public class Main extends HttpServlet {
 								facade.subscribe(nom, fnom, email, password);
 								request.getRequestDispatcher("index.jsp").forward(request, response);
 								break;
-		case "newRegister": request.getRequestDispatcher("signup.jsp").forward(request, response);
-		case "login": Client c = facade.getSubscriber(request.getParameter("email"));
-					  response.addCookie(new Cookie("name", c.getNom()));
-					  response.addCookie(new Cookie("fname", c.getPrenom()));
-					  request.getRequestDispatcher("index.jsp").forward(request, response);
+		case "newRegister": request.getRequestDispatcher("signup.jsp").forward(request, response); break;
+		case "welcome": request.getRequestDispatcher("index.jsp").forward(request, response); break;
+		case "login": Client c = facade.getSubscriber(request.getParameter("email"), request.getParameter("password"));
+						if (c!=null) {
+							response.addCookie(new Cookie("name", c.getNom()));
+							response.addCookie(new Cookie("fname", c.getPrenom()));
+							request.setAttribute("erreur", "1");
+						}
+						else {
+							request.setAttribute("erreur", "1");
+						}
+					  request.getRequestDispatcher("index.jsp").forward(request, response);break;
+		case "disconnect": for (Cookie cook : request.getCookies()) {
+								Cookie cookie = (Cookie) cook.clone();
+								cookie.setMaxAge(0);
+								response.addCookie(cookie);
+							}
+							request.getRequestDispatcher("index.jsp").forward(request, response); break;
+		case "shop": 	boolean connected = false;
+						for (Cookie cook : request.getCookies()) {
+							if (cook.getName().equals("name")) {
+								connected = true;
+							}
+						}
+						if (connected) {
+							request.getRequestDispatcher("magasins.jsp").forward(request, response);
+						}
+						else {
+							request.getRequestDispatcher("magasins.jsp").forward(request, response);
+						}
+						break;
+		case "GPS": List<Magasin> liste = facade.localiser(Double.parseDouble(request.getParameter("longitude")),Double.parseDouble(request.getParameter("latitude")));
+							request.setAttribute("magasins", liste);
+							request.getSession().setAttribute("REFRESH","TRUE");
+							request.getRequestDispatcher("magasins.jsp").forward(request, response);
+							break;
+		case "location": String loc = request.getParameter("location");
+							List<String> listeL = facade.nomsMagasin(loc);
+							request.setAttribute("magasins", listeL);
+							request.getSession().setAttribute("REFRESH","TRUE");
+							request.getRequestDispatcher("magasins.jsp").forward(request, response);
+							break;
+						
 		}
 	}
 

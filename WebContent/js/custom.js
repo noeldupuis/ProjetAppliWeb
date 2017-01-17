@@ -66,13 +66,22 @@ function scrollToID(id, speed){
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(latitude);
     } else { 
         alert("Geolocation is not supported by this browser.");
     }
 }
 
-function showPosition(position) {
-    alert("Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude);
+function latitude(position) {
+    document.getElementById("lat").setAttribute('value', position.coords.latitude);
+    document.getElementById("long").setAttribute('value', position.coords.longitude);
+    alert(position.coords.longitude+"+"+document.getElementById("lat"));
+}
+
+function setAction(action) {
+    document.getElementById("action").setAttribute('value', action);
+}
+
+function sub() {
+	document.getElementById("magasin").submit();
 }

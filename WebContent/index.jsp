@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<% 
+if(session.getAttribute("REFRESH")!=null){
+	session.removeAttribute("REFRESH");
+    response.sendRedirect("../EasyShopping");
+}
+else{    
+session.setAttribute("REFRESH","TRUE");
+}
+%>   
 <% String name = null;
 String fname = null;
 for (Cookie c: request.getCookies()) {
@@ -45,12 +54,12 @@ for (Cookie c: request.getCookies()) {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand mb-0" href="#">EasyShopping</a>
+            <a class="navbar-brand mb-0" href="Main?action=welcome">EasyShopping</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" style="text-align: center;">
               <li class="nav-item active">
-                <a class="nav-link scroll-link" data-id="Markets" href="#Markets" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
+                <a class="nav-link scroll-link" data-id="Markets" href="Main?action=welcome" onclick="$('li').removeClass('active');$(this).parent().addClass('active');">Home</a>
               </li>
               <% if (name == null || fname == null) { %>
               <li class="nav-item">
@@ -67,20 +76,20 @@ for (Cookie c: request.getCookies()) {
                 <a class="nav-link" href="lister.html">Make a list</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="magasins.html">Get my shop</a>
+                <a class="nav-link" href="Main?action=shop">Get my shop</a>
               </li>
               <%} %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <% if (name == null || fname == null) { %>
-              <li class="nav-item"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li class="nav-item"><a href="Main?action=newRegister"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               <li class="nav-item"><a data-toggle="collapse" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <%} else { %>
               <li class="nav-item"><a href="#" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><%=fname%> <%=name%> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">My profile</a></li>
+                  <li><a href="Main?action=profile">My profile</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Disconnect</a></li>
+                  <li><a href="Main?action=disconnect">Disconnect</a></li>
                 </ul>
               </li>
              <% } %>
@@ -180,7 +189,7 @@ for (Cookie c: request.getCookies()) {
       </div>
       <div class="container">
         <div class="col-xs-4 col-xs-offset-4">
-          <a href="magasins.html">
+          <a href="Main?action=newRegister">
             <button class="btn btn-primary" style="font-size: 2em; height: 70px; min-width:100%;">
               <span class="glyphicon glyphicon-map-marker" style="vertical-align: middle;"></span><span style="vertical-align: middle;"> Locate Me</span>
             </button>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="java.util.List"%>
 
 <% 
 if(session.getAttribute("REFRESH")!=null){
@@ -125,47 +127,53 @@ for (Cookie c: request.getCookies()) {
         </div>
       </div>
 
-      <div class="container-fluid white-alt" id="Markets">
-        <div class="container">
-          <h1 style="text-align: center;font-size: 6em;color: #555;font-family: 'Chewy'">Nous rejoindre?</h1>
-          <h2 style="text-align: center;font-size: 3em;font-family: 'Indie Flower'">Inscris-toi simplement</h2>
-          <div class="container vertical-center" style="font-family: 'Lemonada'">
-            <form class="form" action="Main" method="POST" id="mainForm">
-              <div class="form-group col-sm-6">
-                <label class="control-label">Name</label>
-                <input type="text" name="name" class="form-control" required>
+      <div class="container-fluid white-alt" id="Home">
+        <br/><br/>
+
+        <div class="vertical-center">
+          <h1>Find your market</h1>
+            <form action="Main" method="POST" id="magasin">
+	          <div class="input-group">
+	            <input type="text" class="form-control" name="location" placeholder="Enter your location">
+	            <div class="input-group-btn">
+	            	<input type="hidden" name=latitude id="lat">
+	              	<input type="hidden" name=longitude id="long">
+	              	<input type="hidden" name=action id="action">
+	              <button type="button" class="btn btn-default" name="action" value="GPS"  onclick="getLocation();setAction('GPS');sub();">
+	                <i class="glyphicon glyphicon-map-marker"></i>
+	              </button>
+	              <button type="button" class="btn btn-default" name="action" value="location" onclick="setAction('location');sub();">
+	                <i class="glyphicon glyphicon-search"></i>
+	              </button>
+	            </div>
+	          </div>
+	        </form>
+	        
+	        <div class="col-xs-8 col-xs-offset-2)">
+              <div class="table-responsive">
+                <table class="table table-hover" id="liste">
+                  <thead>
+                  	<tr>
+				        <th>Magasin</th>
+				    </tr>
+                  </thead>
+                  <tbody>
+                  <% List<String> mag = (List<String>) request.getAttribute("magasins");
+                  if(mag!=null){
+                  	for (String m: mag) {%>
+                  	<tr>
+				        <th><%=m %></th>
+				    </tr>
+				 	<%} }%>
+                  </tbody>
+                </table>
               </div>
-              <div class="form-group col-sm-6">
-                <label class="control-label"> First name</label>
-                <input type="text" name="fname" class="form-control" required>
-              </div>
-              <div class="form-group col-sm-6">
-                <label class="control-label">Email</label>
-                <input type="text" name="email" class="form-control" <% if (request.getParameter("email")!= null) { %>value="<%=request.getParameter("email")%>"<%}%>required>
-              </div>
-              <div class="form-group col-sm-6">
-                <label class="control-label">Confirm email</label>
-                <input type="text" class="form-control" required>
-              </div>
-              <div class="form-group col-sm-6">
-                <label class="control-label">Password</label>
-                  <input type="text" name="password" class="form-control" <% if (request.getParameter("password")!= null) { %>value="<%=request.getParameter("password")%>"<%}%> required>
-              </div>
-              <div class="form-group col-sm-6">
-                <label class="control-label">Confirm password</label>
-                  <input type="text" class="form-control" required>
-              </div>
-              <div>
-                <label class="checkbox-inline"><input type="checkbox" value="" required>I agree with Terms and Contions of Use of the service. (required)</label> 
-              </div>
-              <div class="col-xs-offset-4">
-                <input type="hidden" name="action" value="registerClient">
-                <input type="submit" value="S'inscrire" class="btn btn-primary" >
-              </div>
-            </form>
-          </div>
+            </div>
         </div>
       </div>
+
+
+        
 
       <div class="container-fluid" style="color: #999;background-color: #2F2F2F;">
         <div class="container">
