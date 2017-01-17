@@ -38,6 +38,17 @@ public class Magasin {
 		this.latitude = lat;
 	}
 	
+	public List<Produit> allProducts(){
+		List<Produit> l = new ArrayList<Produit>();
+		
+		for(Rayon r : rayons){
+			for(ArticleRayon a : r.getArticles()){
+				l.add(a.getArticle());
+			}
+		}
+		return l;
+	}
+	
 	public double distance(double lon1, double lat1){
 		double R = 6372.8; // rayon de la terre
 		double lat2 = this.latitude;
@@ -52,7 +63,6 @@ public class Magasin {
         double c = 2 * Math.asin(Math.sqrt(a));
         return R * c;
 	}
-	
 	
 	public void ajouterRayon(Rayon r) {		
 		if (this.rayons.size() == r.getNumero()) {
